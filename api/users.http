@@ -1,0 +1,68 @@
+GET http://localhost:8800/api/auth/register
+###
+POST http://localhost:8800/api/auth/register HTTP/1.1
+Content-Type: application/json
+
+{
+    "username":"test2",
+    "email":"test2@gmail.com",
+    "password":"test2"
+}
+
+###
+POST http://localhost:8800/api/auth/login HTTP/1.1
+Content-Type: application/json
+
+{
+    "email":"test2@gmail.com",
+    "password":"test2"
+}
+
+###
+PUT http://localhost:8800/api/users/6265160ddbfd233b0ce44687 HTTP/1.1
+Content-Type: application/json
+
+{
+    "userId" : "6265160ddbfd233b0ce44687",
+    "coverPicture" : "noCover.png"
+}
+
+###
+DELETE  http://localhost:8800/api/users/6244603bc91437e4bdc99264 HTTP/1.1
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyNDQ2MDNiYzkxNDM3ZTRiZGM5OTI2NCIsImlhdCI6MTY1MDY2MTk5OH0.3aqVsZZ7mBeNhAU6aXGbWL_FZYvturO__3Ro4H5g3N0
+
+{
+    "userId" : "6244603bc91437e4bdc99264"
+}
+
+
+###
+GET  http://localhost:8800/api/users/623144883e2a924d35da2389 HTTP/1.1
+
+
+###
+PUT  http://localhost:8800/api/users/6234f9db94482db6c78ce3e4/follow HTTP/1.1
+Content-Type: application/json
+
+{
+    "userId" : "6265160ddbfd233b0ce44687"
+}
+
+###
+PUT  http://localhost:8800/api/users/6234f9d694482db6c78ce3e2/unfollow HTTP/1.1
+Content-Type: application/json
+
+{
+    "userId" : "6234f9db94482db6c78ce3e4"
+}
+
+###
+GET  http://localhost:8800/api/users/6244603bc91437e4bdc99264/followers HTTP/1.1
+
+###
+GET  http://localhost:8800/api/users/random-users HTTP/1.1
+
+###
+GET  http://localhost:8800/api/users/search HTTP/1.1
+

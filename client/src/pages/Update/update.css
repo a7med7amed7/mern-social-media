@@ -1,0 +1,45 @@
+.updateContainer{
+    background-color: black;
+    width: 100%;
+    height: calc(100vh);
+}
+.updateForm{
+    display: flex;
+    flex-direction: column;
+    width: 30vw;
+    position: absolute;
+    top: 37%;
+    left: 35%;
+    background: rgb(0, 0, 0);
+    padding: 5px;
+  -webkit-box-shadow: 1px 1px 20px -4px rgba(233, 223, 223, 0.68);
+
+}
+
+.updateForm input{
+    border: 0;
+    outline: 0;
+    padding: 10px;
+    margin: 7px 0;
+    font-size: 18px;
+    background-color: black;
+    color: white;
+}
+
+
+.updateForm input:focus{
+    border-bottom: 1px solid red;
+}
+
+
+.updateForm button{
+    padding: 8px;
+    border: 1px solid white;
+    border-radius: 5px;
+    font-size: 18px;
+    font-weight: 600;
+    background: black;
+    color: white;
+    cursor: pointer;
+
+}

@@ -1,0 +1,12 @@
+.feed {
+  flex: 6;
+}
+.feedWrapper {
+  padding: 27px;
+}
+
+.empty{
+  text-align: center;
+    margin: 30px;
+    font-size: 20px;
+}

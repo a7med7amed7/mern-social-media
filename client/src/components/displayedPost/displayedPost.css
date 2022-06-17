@@ -1,0 +1,45 @@
+.dp{
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    width: auto;
+}
+.dpWrapper{
+    width: auto;
+}
+.loadingPostSpinner{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+}
+
+
+.createComment{
+    display: flex;
+    flex-direction: column;
+    width: 70%;
+    padding: 20px;
+}
+
+.createCommentInput{
+    border: 0;
+    outline: none;
+    font-size: 18px;
+    margin-bottom: 13px;
+
+}
+
+.createCommentInput:focus{
+    border-bottom: 1px solid rgb(214, 52, 52);
+}
+.createCommentButton{
+    border: 0;
+    padding: 7px;
+    color: rgb(255, 255, 255);
+    background-color: rgb(45, 45, 192);
+    border-radius: 5px;
+    font-size: 16px;
+    font-weight: 500;
+}

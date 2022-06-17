@@ -1,0 +1,95 @@
+.topbarContainer {
+  background-color: #1877f2;
+  display: flex;
+  align-items: center;
+  position: sticky;
+  top: 0;
+  z-index: 999;
+  height: 50px;
+  width: 100%;
+  justify-content: space-between;
+}
+
+
+.logo {
+  font-size: 25px;
+  color: white;
+  margin-left: 50px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+
+.topbarRight {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  color: white;
+}
+.topbarLinks
+{
+  display: flex;
+  align-items: center;
+}
+
+.topbarLink {
+  margin-right: 10px;
+  cursor: pointer;
+  color: white;
+    text-decoration: none;
+    font-size: 20px;
+    display: flex;
+    flex-direction: row;
+}
+.topbarIcons {
+  display: flex;
+}
+.topbarIconsItem {
+  position: relative;
+  cursor: pointer;
+  margin-right: 20px;
+}
+.topbarIconsBadge {
+  font-size: 12px;
+  background-color: rgb(209, 12, 12);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  top: -5px;
+  right: -5px;
+  width: 15px;
+  height: 15px;
+}
+.topbarImg {
+  width: 40px;
+  height: 40px;
+  object-fit: cover;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+.alertIcons{
+  display: flex;
+}
+
+.notifications{
+  cursor: pointer;
+  margin-right: 20px;
+}
+
+.notifications svg{
+  font-size: 35px;
+}
+.notifications span{
+  position: absolute;
+  background: red;
+  padding: 2px 6px;
+  border-radius: 50%;
+  font-size: 17px;
+  align-items: center;
+  text-align: center;
+  right: 92px;
+  top: 3px;
+}

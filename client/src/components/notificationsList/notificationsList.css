@@ -1,0 +1,31 @@
+.notificationsContainer{
+    position: absolute;
+    top: 50px;
+    right: 90px;
+    background: rgb(239 238 238);
+    padding: 10px;
+    max-height: 50vh;
+    overflow-y: scroll;
+    
+
+}
+
+.notification{
+    display: flex;
+    align-items: center;
+    margin: 10px 0;
+    padding: 5px;
+}
+
+.notification img{
+    width: 60px;
+    height: 60px;
+    object-fit: cover;
+    border-radius: 50%;
+    border: 1px solid white;
+}
+
+.notification div{
+    font-size: 19px;
+    margin-left: 6px;
+}

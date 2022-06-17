@@ -1,0 +1,66 @@
+POST http://localhost:8800/api/posts HTTP/1.1
+Content-Type: application/json
+
+{
+    "userId":"6234f9db94482db6c78ce3e4",
+    "desc":"TEST POST",
+    "img":"post/3.jpeg"
+}
+
+###
+
+PUT http://localhost:8800/api/posts/623629c5298ee05b99327711 HTTP/1.1
+Content-Type: application/json
+
+{
+    "userId":"6234f9d694482db6c78ce3e2",
+    "desc":"Hello Python"
+}
+
+###
+
+DELETE http://localhost:8800/api/posts/62362d3141345127b4f9cac3 HTTP/1.1
+Content-Type: application/json
+
+{
+    "userId":"6234f9d694482db6c78ce3e2"
+}
+
+###
+
+PUT http://localhost:8800/api/posts/623629c5298ee05b99327711/like HTTP/1.1
+Content-Type: application/json
+
+{
+    "userId":"6234f9d694482db6c78ce3e2"
+}
+
+
+###
+
+GET http://localhost:8800/api/posts/623629c5298ee05b99327711 HTTP/1.1
+
+
+###
+
+GET http://localhost:8800/api/posts/profile/ahmed HTTP/1.1
+
+
+###
+
+GET http://localhost:8800/api/posts/timeline/6244603bc91437e4bdc99264 HTTP/1.1
+Content-Type: application/json
+
+{
+    "userId":"6234f9d694482db6c78ce3e2"
+}
+
+
+###
+
+PUT http://localhost:8800/api/posts/comment/vote/626e85ca5cc6ffc6c7c087fc/up HTTP/1.1
+Content-Type: application/json
+
+{
+    "userId":"6234f9d694482db6c78ce3e2"
+}

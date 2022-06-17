@@ -1,0 +1,13 @@
+
+###
+POST  http://localhost:8800/api/posts/comment HTTP/1.1
+Content-Type: application/json
+
+{
+    "userId":"6265160ddbfd233b0ce44687",
+    "postId" :"626ab9e588a466360e473f9d",
+    "content":"Comment1"
+}
+
+###
+GET  http://localhost:8800/api/posts/comment/626abb3962fa9642b704192f HTTP/1.1
