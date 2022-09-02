@@ -69,8 +69,12 @@ router.get("/timeline/:userId", async (req, res) => {
         return Post.find({ userId: entityId });
       })
     );
-    console.log(followingsPosts);
-    res.status(200).json([...followingsPosts]);
+    let ress = [];
+    for (let i = 0; i < followingsPosts.length; i++) {
+      ress = ress.concat(followingsPosts[i]);
+    }
+    console.log(ress);
+    res.status(200).json(ress);
   } catch (err) {
     res.status(500).json(err);
   }
@@ -80,8 +84,8 @@ router.get("/profile/:username", async (req, res) => {
   try {
     const user = await User.findOne({ username: req.params.username });
     const posts = await Post.find({ userId: user._id });
-
-    res.status(200).json([posts]);
+    console.log(posts)
+    res.status(200).json(posts);
   } catch (err) {
     res.status(500).json(err);
   }

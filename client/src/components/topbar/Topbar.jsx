@@ -28,7 +28,7 @@ function Topbar() {
           </Link>
           <div className="alertIcons">
             <div className="notifications">
-              <Notifications />
+              {/* <Notifications /> */}
               <span>5</span>
             </div>
             {/* <div className="notifications">

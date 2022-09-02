@@ -5,14 +5,14 @@ import "./notificationsList.css";
 function NotificationsList() {
   const [notifications, setNotifications] = useState([]);
   const user = JSON.parse(localStorage.getItem("user"));
-  useEffect(() => {
-    const getNotifications = async () => {
-      const { data } = await axios.get(`posts/notifications/${user._id}`);
-      setNotifications(data);
-    };
-    getNotifications();
-    console.log(notifications);
-  }, [user._id]);
+  // useEffect(() => {
+  //   const getNotifications = async () => {
+  //     const { data } = await axios.get(`posts/notifications/${user._id}`);
+  //     setNotifications(data);
+  //   };
+  //   getNotifications();
+  //   console.log(notifications);
+  // }, [user._id]);
   return (
     <div className="notificationsContainer">
       {notifications.map((n) => {
