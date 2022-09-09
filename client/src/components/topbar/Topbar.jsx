@@ -5,13 +5,15 @@ import {
   Chat,
   Notifications,
   PeopleAlt,
+  ArrowDropDownCircle
 } from "@material-ui/icons";
 import { Link } from "react-router-dom";
 import Logout from "../logout/Logout";
 import jwtDecode from "jwt-decode";
 import SearchData from "../searchData/SearchData";
+import DropDown from "../DropDown/DropDown";
 function Topbar() {
-  // const PF = process.env.REACT_APP_BASE_URL;
+  const PF = process.env.REACT_APP_BASE_URL;
   const user = JSON.parse(localStorage.getItem("user"));
   console.log(user);
   return (
@@ -21,22 +23,24 @@ function Topbar() {
           <span className="logo">SocialMedia</span>
         </Link>
       </div>
+      <div className="search">
+        <form>
+          <input type="text" placeholder="Find Some Friends" />
+
+          <button><Search /></button>
+        </form>
+      </div>
       <div className="topbarRight">
         <div className="topbarLinks">
-          <Link to={`/profile/${user.username}`} className="topbarLink">
-            Profile
+          {/* <Link to={`/profile`} className='navProfile'>
+            <img
+              src={PF + user.profilePicture}
+              alt="Profile Pic"
+              className="topbarImg"
+            />
           </Link>
-          <div className="alertIcons">
-            <div className="notifications">
-              {/* <Notifications /> */}
-              <span>5</span>
-            </div>
-            {/* <div className="notifications">
-              <Person />
-              <span>5</span>
-            </div> */}
-          </div>
-          <Logout />
+          <Logout /> */}
+          <DropDown />
         </div>
         {/* 
         <div className="topbarIcons">

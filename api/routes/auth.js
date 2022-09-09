@@ -52,7 +52,7 @@ routes.post(
       const accessToken = generateAccessToken(user);
       const refreshToken = generateRefreshToken(user);
       const { password, createdAt, ...userData } = user._doc;
-      res.status(200).json({ userData, accessToken, refreshToken });
+      res.status(200).json({ userData, accessToken });
     } catch (err) {
       res.status(200).json(err);
     }

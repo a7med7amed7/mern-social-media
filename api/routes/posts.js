@@ -28,11 +28,12 @@ router.put("/:id", async (req, res) => {
   }
 });
 
-router.delete("/:id", async (req, res) => {
+router.put("/delete/:id", async (req, res) => {
+  const post = await Post.findById(req.params.id);
   try {
-    const post = await Post.findById(req.params.id);
-    if (post.userId == req.body.userId) {
-      await post.deleteOne();
+    console.log(req.body);
+    if (post.userId === req.body.userId) {
+      await Post.findByIdAndDelete(req.params.id);
       res.status(200).json({ message: "Your post has been deleted." });
     } else {
       res.status(403).json({ message: "You can delete only your posts." });
@@ -74,6 +75,7 @@ router.get("/timeline/:userId", async (req, res) => {
       ress = ress.concat(followingsPosts[i]);
     }
     console.log(ress);
+
     res.status(200).json(ress);
   } catch (err) {
     res.status(500).json(err);

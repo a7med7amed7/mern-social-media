@@ -6,6 +6,7 @@ import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import DisplayedPost from "./components/displayedPost/DisplayedPost";
 import Update from "./pages/Update/Update";
 import NotificationsList from "./components/notificationsList/NotificationsList";
+import NotFound from "./components/NotFound/NotFound";
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
         <Route exact path="/profile/:username" element={<Profile />} />
         <Route exact path="/post/:id" element={<DisplayedPost />} />
         <Route exact path="/profile/:username/update" element={<Update />} />
+        <Route exact path="*" element={<NotFound />} />
       </Routes>
       <NotificationsList />
     </Router>

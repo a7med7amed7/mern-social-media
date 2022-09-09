@@ -37,12 +37,18 @@ app.use("/api/posts", postRoute);
 
 // const upload = multer({ storage: storage });
 app.post("/api/upload", upload.single("file"), (req, res) => {
+  console.log("Files ", req.file.filename)
   try {
-    return res.status(200).json("File uploded successfully");
+    return res.status(200).json(req.file.filename);
   } catch (error) {
     console.error(error);
   }
 });
+
+// app.use(express.static('../client/build'))
+// app.get('*', (req, res) => {
+//   res.sendFile(`${__dirname}/../client/build/index.html`)
+// })
 
 app.listen(8800, () => {
   console.log("Running ");

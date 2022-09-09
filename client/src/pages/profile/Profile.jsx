@@ -5,7 +5,7 @@ import Sidebar from "../../components/sidebar/Sidebar";
 import Topbar from "../../components/topbar/Topbar";
 import axios from "axios";
 import { useEffect, useState } from "react";
-import { Link, useLocation, useParams } from "react-router-dom";
+import { Link, useLocation, useNavigate, useParams } from "react-router-dom";
 import { Edit } from "@material-ui/icons";
 function Profile() {
   const PF = process.env.REACT_APP_BASE_URL;
@@ -14,7 +14,7 @@ function Profile() {
   const location = useLocation();
   const currentUser = JSON.parse(localStorage.getItem("user"));
   const [follow, setFollow] = useState(false);
-
+  const navigate = useNavigate();
   useEffect(() => {
     const fetchUser = async () => {
       const res = await axios.get(`/users?username=${username}`);
@@ -33,14 +33,15 @@ function Profile() {
       }
     };
     isFollower();
-  }, [currentUser.followings, user._id, follow]);
+  }, [follow]);
   const followHandler = async (e) => {
     e.preventDefault();
     await axios.put(`/users/${user._id}/follow`, { userId: currentUser._id });
     currentUser.followings.push(user._id);
     localStorage.setItem("user", JSON.stringify(currentUser));
-
+    currentUser = JSON.parse(localStorage.getItem("user"));
     setFollow(!follow);
+    navigate('/');
     console.log(currentUser.followings, user);
   };
   const unfollowHandler = async (e) => {
@@ -50,6 +51,7 @@ function Profile() {
       return u !== user._id;
     });
     localStorage.setItem("user", JSON.stringify(currentUser));
+    currentUser = JSON.parse(localStorage.getItem("user"));
 
     setFollow(!follow);
     console.log(follow);
@@ -92,13 +94,17 @@ function Profile() {
                 <Edit />
               </Link>
             ) : (
-              <form onSubmit={!follow ? followHandler : unfollowHandler}>
-                {!follow ? (
-                  <button className="follow">Follow</button>
-                ) : (
-                  <button className="unfollow">Unfollow</button>
-                )}
-              </form>
+              <div style={{ display: "flex", alignItems: "center", justifyContent: "center", flexDirection: "column" }}>
+                <form onSubmit={!follow ? followHandler : unfollowHandler}>
+                  {!follow ? (
+                    <button className="follow">Follow</button>
+                  ) : (
+                    <button className="unfollow">Unfollow</button>
+                  )}
+                </form>
+
+                <div>Follwoings System is Unstable Now, It's prefered To Re-login.</div>
+              </div>
             )}
           </div>
           <div className="profileCenetrBottom">

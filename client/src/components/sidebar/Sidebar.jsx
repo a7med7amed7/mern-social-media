@@ -15,6 +15,8 @@ import CloseFriend from "../closeFriend/CloseFriend";
 import { useEffect, useState } from "react";
 import axios from "axios";
 import SearchData from "../searchData/SearchData";
+import UserInfo from "../userInfo/UserInfo";
+import SidebarMenu from "../sideBarMenu/SidebarMenu";
 function Sidebar() {
   const [users, setUsers] = useState([]);
   useEffect(() => {
@@ -25,10 +27,11 @@ function Sidebar() {
     };
     getUsers();
   }, []);
+  const PF = process.env.REACT_APP_BASE_URL;
 
   return (
     <div className="sidebar">
-      <div className="sidebarWrapper">
+      {/* <div className="sidebarWrapper">
         <SearchData />
         <hr className="sidebarHr" />
         <h2 className="closeFriendsTitle">People You May Know </h2>
@@ -37,6 +40,18 @@ function Sidebar() {
             <CloseFriend key={u._id} user={u} />
           ))}
         </ul>
+      </div> */}
+      <UserInfo />
+      <SidebarMenu />
+      <div className="birthday">
+        <img className="birthdayImg" src={PF + "gift.png"} alt="Birthday" />
+        <span className="birthdayText">
+          <b>Mohamed Ahmed</b> and <b>3 other</b> have their birthday today.
+          Wish them a good day.
+        </span>
+      </div>
+      <div className="ad">
+        <img src={PF + "meme.jpg"} alt="Birthday" />
       </div>
     </div>
   );
