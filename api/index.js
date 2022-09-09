@@ -44,11 +44,13 @@ app.post("/api/upload", upload.single("file"), (req, res) => {
     console.error(error);
   }
 });
+if (process.env.NODE_ENV === 'production') {
+  app.use(express.static('client/build'))
 
-// app.use(express.static('../client/build'))
-// app.get('*', (req, res) => {
-//   res.sendFile(`${__dirname}/../client/build/index.html`)
-// })
+  app.get('*', (req, res) => {
+    res.sendFile(`${__dirname}/client/build/index.html`)
+  })
+}
 
 app.listen(8800, () => {
   console.log("Running ");
