@@ -4,7 +4,7 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { CircularProgress } from "@material-ui/core";
-import { FavoriteBorderOutlined, Favorite } from "@material-ui/icons";
+import { FavoriteBorderOutlined, Favorite, Delete, Edit } from "@material-ui/icons";
 function Post({ post }) {
   const PF = process.env.REACT_APP_BASE_URL;
 
@@ -21,28 +21,40 @@ function Post({ post }) {
 
   const likeHandler = async () => {
     try {
-      await axios.put(`posts/${post._id}/like`, { userId: currentUser._id });
+      await axios.put(`/posts/${post._id}/like`, { userId: currentUser._id });
     } catch (err) {
       console.log(err);
     }
     setLike(isLike ? like - 1 : like + 1);
     setIsLike(!isLike);
+    // try {
+    //   await axios.put(`/posts/action/${user._id}`, {
+    //     userId: currentUser._id,
+    //     type: "like",
+    //     postId: post._id,
+    //   });
+    // } catch (err) {
+    //   console.log(err);
+    // }
+  };
+
+  const [visible, setVisible] = useState(false);
+  const [deleted, setDeleted] = useState(false);
+
+  const deletePostHandler = async () => {
     try {
-      await axios.put(`/posts/action/${user._id}`, {
-        userId: currentUser._id,
-        type: "like",
-        postId: post._id,
-      });
+      await axios.put(`/posts/delete/${post._id}`, { userId: currentUser._id });
+      setDeleted(true);
     } catch (err) {
       console.log(err);
     }
-  };
+  }
 
   useEffect(() => {
     const fetchUser = async () => {
       const res = await axios.get(`/users?userId=${post.userId}`);
       setUser(res.data);
-      img.onload = () => {};
+      img.onload = () => { };
     };
     fetchUser();
   }, [post.userId]);
@@ -50,65 +62,84 @@ function Post({ post }) {
     setImgDisplay("flex");
     setLoading(false);
   };
+  console.log(post, currentUser)
   return (
-    <div className="post">
-      <div className="postWrapper">
-        <div className="postTop">
-          {loading ? <CircularProgress /> : ""}
-          <div className="postTopLeft" style={{ display: imgDisplay }}>
-            <Link
-              to={"/profile/" + user.username}
-              style={{
-                textDecoration: "none",
-                display: "flex",
-                alignItems: "center",
-                color: "black",
-              }}
-            >
-              <div className="tempImage">
-                <img
-                  className="postProfileImg"
-                  src={PF + user.profilePicture}
-                  alt=""
-                  onLoad={imageHandler}
-                  style={{ display: imgDisplay }}
-                />
-              </div>
+    <>
+      {!deleted && (
 
-              <span className="postUsername">{user.username}</span>
-            </Link>
-            <span className="postDate">{post.createdAt}</span>
-          </div>
-          <div className="postTopRight">
-            <MoreVert />
-          </div>
-        </div>
-        <div className="postCenter">
-          <span className="postText">{post?.desc}</span>
-          <img className="postImg" src={PF + post.img} alt="PostImage" />
-        </div>
-        <div className="postBottom">
-          <div className="postBottomLeft">
-            <div className="likeIcon" onClick={likeHandler}>
-              {isLike ? (
-                <Favorite style={{ color: "red", fontSize: "2em" }} />
-              ) : (
-                <FavoriteBorderOutlined
-                  style={{ color: "gray", fontSize: "2em" }}
-                />
+        <div className="post">
+          <div className="postWrapper">
+            <div className="postTop">
+              {loading ? <CircularProgress /> : ""}
+              <div className="postTopLeft" style={{ display: imgDisplay }}>
+                <Link
+                  to={"/profile/" + user.username}
+                  style={{
+                    textDecoration: "none",
+                    display: "flex",
+                    alignItems: "center",
+                    color: "black",
+                  }}
+                >
+                  <div className="tempImage">
+                    <img
+                      className="postProfileImg"
+                      src={PF + user.profilePicture}
+                      alt=""
+                      onLoad={imageHandler}
+                      style={{ display: imgDisplay }}
+                    />
+                  </div>
+
+                  <span className="postUsername">{user.username}</span>
+                </Link>
+                <span className="postDate">{new Date(post.createdAt).toLocaleString()}</span>
+              </div>
+              <div className="postTopRight" onClick={() => setVisible(!visible)}>
+                <div className="postMenu" style={{ visibility: visible ? "inherit" : "hidden" }}>
+                  <span>
+                    <i><Delete /> </i>
+                    <div className="menuTitle" onClick={deletePostHandler}>Delete</div>
+                  </span>
+                  <span>
+                    <i><Edit /> </i>
+                    <div className="menuTitle">Edit</div>
+                  </span>              </div>
+
+                <MoreVert />
+              </div>
+            </div>
+            <div className="postCenter">
+              <span className="postText">{post?.desc}</span>
+              {post.img && (
+
+                <img className="postImg" src={PF + post.img} alt="PostImage" />
               )}
             </div>
-            <span className="postLikeCounter">{like} people like it</span>
-          </div>
-          <div className="postBottomRight">
-            <Link className="postCommentText" to={`/post/${post._id}`}>
-              {" "}
-              comments
-            </Link>
+            <div className="postBottom">
+              <div className="postBottomLeft">
+                <div className="likeIcon" onClick={likeHandler}>
+                  {isLike ? (
+                    <Favorite style={{ color: "red", fontSize: "2em" }} />
+                  ) : (
+                    <FavoriteBorderOutlined
+                      style={{ color: "gray", fontSize: "2em" }}
+                    />
+                  )}
+                </div>
+                <span className="postLikeCounter">{like} people like it</span>
+              </div>
+              <div className="postBottomRight">
+                <Link className="postCommentText" to={`/post/${post._id}`}>
+                  {" "}
+                  comments
+                </Link>
+              </div>
+            </div>
           </div>
         </div>
-      </div>
-    </div>
+      )}
+    </>
   );
 }
 

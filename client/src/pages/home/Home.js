@@ -1,3 +1,5 @@
+import { useEffect } from "react";
+import { useNavigate } from "react-router";
 import Feed from "../../components/feed/Feed";
 import Rightbar from "../../components/rightbar/Rightbar";
 import Sidebar from "../../components/sidebar/Sidebar";
@@ -6,6 +8,10 @@ import "./home.css";
 
 function Home() {
   const token = localStorage.getItem("token");
+  const navigate = useNavigate()
+  useEffect(() => {
+    if (!token) navigate('./login', { replace: true });
+  })
   const res = (
     <>
       <Topbar />
@@ -13,6 +19,7 @@ function Home() {
         <Sidebar />
         <Feed />
         <Rightbar />
+
       </div>
     </>
   );

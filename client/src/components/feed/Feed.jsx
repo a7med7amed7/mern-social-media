@@ -33,7 +33,15 @@ function Feed({ username }) {
           posts.map((p) => <Post key={p._id} post={p} />)
         ) : (
           <div className="empty">
-            <CircularProgress />
+            {loaded && posts.length == 0 ? (
+
+              username ? "No posts!" : "Nothing To Share, Follow Some Friends."
+            )
+
+
+              : (
+                <CircularProgress />
+              )}
           </div>
         )}
       </div>

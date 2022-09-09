@@ -26,6 +26,7 @@
   font-weight: 800;
   color: #1775ee;
   margin-bottom: 10px;
+
 }
 
 .loginDesc {
@@ -39,7 +40,6 @@
   border-radius: 10px;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
 }
 
 .loginInput {
@@ -48,6 +48,7 @@
   border: 1px solid gray;
   font-size: 18px;
   padding-left: 20px;
+  margin: 10px 0;
 }
 
 .loginInput:focus {
@@ -64,6 +65,7 @@
   font-weight: 500;
   cursor: pointer;
 }
+
 .loginButton:focus {
   outline: none;
 }
@@ -71,6 +73,8 @@
 .loginForgot {
   text-align: center;
   color: #1775ee;
+  margin-top: 30px;
+  margin-bottom: 10px;
 }
 
 .loginRegisterButton {
@@ -84,6 +88,10 @@
   font-size: 20px;
   font-weight: 500;
   cursor: pointer;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .loginButton:disabled,

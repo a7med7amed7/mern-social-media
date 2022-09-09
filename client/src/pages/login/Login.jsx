@@ -4,7 +4,7 @@ import { CircularProgress } from "@material-ui/core";
 import { useDispatch } from "react-redux";
 import { loginCall } from "../../apiCalls";
 
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 import store from "../../redux/store";
 export default function Login() {
@@ -42,8 +42,8 @@ export default function Login() {
             Connect with friends and the world around you on SocialMedia.
           </span>
         </div>
-        <div className="loginRight" onSubmit={loginClickHandler}>
-          <form className="loginBox">
+        <div className="loginRight" >
+          <form className="loginBox" onSubmit={loginClickHandler}>
             <input
               placeholder="Email"
               type="email"
@@ -60,7 +60,7 @@ export default function Login() {
             />
             <button className="loginButton">Login</button>
             <span className="loginForgot">Forgot Password?</span>
-            <button className="loginRegisterButton">Create new account</button>
+            <Link to="/register" className="loginRegisterButton">Create new account</Link>
           </form>
           {/* <DisplayedPost /> */}
         </div>

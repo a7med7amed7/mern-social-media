@@ -35,6 +35,7 @@ function DisplayedPost() {
       body.postId = post._id;
       body.content = comment;
       const { data } = await axios.post("/posts/comment", body);
+      e.target.value = "";
       console.log(data);
     } catch (err) {
       console.log(err);
